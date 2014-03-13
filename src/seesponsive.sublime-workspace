@@ -1,0 +1,445 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"des",
+				"descriptors"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"content",
+				"row-content"
+			],
+			[
+				"e",
+				"elemTop"
+			],
+			[
+				"el",
+				"elementPosition"
+			],
+			[
+				"scroll",
+				"scrollTop"
+			],
+			[
+				"row",
+				"row-content"
+			],
+			[
+				"vid",
+				"videoDiv"
+			],
+			[
+				"progres",
+				"progressBar"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"l",
+				"lastProgress"
+			],
+			[
+				"next",
+				"nextSlideId"
+			],
+			[
+				"opac",
+				"opacityStep"
+			],
+			[
+				"spot",
+				"spotDetails"
+			],
+			[
+				"back",
+				"back30"
+			],
+			[
+				"is",
+				"isRunning"
+			],
+			[
+				"ne",
+				"newPos"
+			],
+			[
+				"img",
+				"imgStyle"
+			],
+			[
+				"Vec",
+				"VectorImageSpec"
+			],
+			[
+				"Hello",
+				"HelloComponent"
+			],
+			[
+				"client",
+				"clientSession"
+			],
+			[
+				"cli",
+				"clientSession"
+			],
+			[
+				"linked",
+				"linkedSessions"
+			],
+			[
+				"magic",
+				"magicToken"
+			],
+			[
+				"magi",
+				"magicToken"
+			],
+			[
+				"socket",
+				"socketIo"
+			],
+			[
+				"conn",
+				"connections"
+			],
+			[
+				"pr",
+				"prototype"
+			],
+			[
+				"expres",
+				"expressHandlebars"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 258,
+				"line_ending": "Unix",
+				"name": "<html>"
+			}
+		}
+	],
+	"build_system": "Packages/User/canopy.sublime-build",
+	"command_palette":
+	{
+		"height": 47.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"less",
+				"Package Control: List Packages"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: #!/usr/bin/env"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 153.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/scripts/main.js",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/index_real.json",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/about.md",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/resources.md",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/lessons/lesson1/index.md",
+		"/Users/simon/Documents/simon/projects/devilish/website/templates/page.jade",
+		"/Users/simon/Documents/simon/projects/devilish/website/config.json",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/lessons/lesson2/index.md",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/index.html",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/404.html",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/index.json",
+		"/Users/simon/Documents/simon/projects/tutespot-website/templates/index.jade",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/styles/layers.min.css",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/css/main.less",
+		"/Users/simon/Documents/simon/projects/devilish/website/contents/index.md",
+		"/Users/simon/Documents/simon/projects/devilish/website/node_modules/wintersmith-less/plugin.coffee",
+		"/Users/simon/Documents/simon/projects/devilish/website/node_modules/wintersmith-less/index.js",
+		"/Users/simon/Documents/simon/projects/devilish/website/node_modules/wintersmith-less/package.json",
+		"/Users/simon/Documents/simon/projects/tutespot/player/src/client/player.less",
+		"/Users/simon/Documents/simon/projects/tutespot/player/app.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/gulpfile.js",
+		"/Users/simon/Documents/simon/projects/config.json",
+		"/Users/simon/Documents/simon/projects/devilish/templates/layout.jade",
+		"/Users/simon/Documents/simon/projects/devilish/templates/index.jade",
+		"/Users/simon/Documents/simon/projects/devilish/config.json",
+		"/Users/simon/Documents/simon/projects/devilish/contents/authors/the-wintersmith.json",
+		"/Users/simon/Documents/simon/projects/devilish/templates/author.jade",
+		"/Users/simon/Documents/simon/projects/devilish/templates/article.jade",
+		"/Users/simon/Documents/simon/projects/devilish/templates/archive.jade",
+		"/Users/simon/Documents/simon/projects/devilish/contents/archive.json",
+		"/Users/simon/Documents/simon/projects/devilish/contents/articles/another-test/index.md",
+		"/Users/simon/Documents/simon/projects/tutespot/player/src/server/routes/index.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/src/server/views/iframe_builder.handlebars",
+		"/Users/simon/Documents/simon/projects/tutespot/product-description.md",
+		"/Users/simon/Documents/simon/projects/tutespot/player/src/server/views/player.handlebars",
+		"/Users/simon/Documents/simon/projects/tutespot/player/src/server/server.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/src/client/player.css",
+		"/Users/simon/Documents/simon/projects/tutespot/player/package.json",
+		"/Users/simon/Documents/simon/projects/tutespot/player/views/player.handlebars",
+		"/Users/simon/Documents/simon/projects/tutespot/player/js/playpen-controls.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/js/player-main.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/snap.html",
+		"/Users/simon/Documents/simon/projects/tutespot/player/server.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/app_config.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/static/css/main.css",
+		"/Users/simon/Documents/simon/projects/tutespot/player/views/iframe_builder.handlebars",
+		"/Users/simon/Documents/simon/projects/tutespot/player/js/player.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/views/test.handlebars",
+		"/Users/simon/Documents/simon/projects/tutespot/player/static/player/index.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/js/playpen-main.js",
+		"/Users/simon/Documents/simon/projects/tutespot/todo.md",
+		"/Users/simon/Documents/simon/projects/tutespot/player/spot.yaml",
+		"/Users/simon/Documents/simon/projects/tutespot/player/tutespot-player.sublime-project",
+		"/Users/simon/Documents/simon/projects/tutespot/player/js/imagebox",
+		"/Users/simon/Documents/simon/projects/tutespot/player/js/textbox.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/views/layouts/player_layout.handlebars",
+		"/Users/simon/Documents/simon/projects/tutespot/player/views/layouts/main.handlebars",
+		"/Users/simon/Documents/simon/projects/tutespot/player/.gitignore",
+		"/Users/simon/Documents/simon/projects/tutespot/player/views/playpen.handlebars",
+		"/Users/simon/Documents/simon/projects/tutespot/player/static/player/index.html",
+		"/Users/simon/Documents/simon/projects/tutespot/player/static/playpen/index.html",
+		"/Users/simon/Documents/simon/projects/tutespot/player/js/index.js",
+		"/Users/simon/Documents/simon/projects/tutespot/player/static/index.html",
+		"/Users/simon/Documents/simon/projects/tutespot/player/css/main.css",
+		"/Users/simon/Documents/simon/projects/tutespot/player/index.html",
+		"/Users/simon/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/simon/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/simon/Documents/simon/projects/tutespot/package.json",
+		"/Users/simon/Documents/simon/projects/tutespot/.gitignore",
+		"/Users/simon/Documents/simon/projects/tutespot/src/index.js",
+		"/Users/simon/Documents/simon/projects/tutespot/css/main.css",
+		"/Users/simon/Documents/simon/projects/tutespot/index.html",
+		"/Users/simon/Documents/simon/projects/tutespot/tech-design.md",
+		"/Users/simon/Documents/simon/projects/tutespot/readme.md",
+		"/Users/simon/Documents/simon/projects/tutespot/livereload.js",
+		"/Users/simon/Documents/simon/projects/tutespot/test.gs",
+		"/Users/simon/Documents/simon/projects/relish/language.peg",
+		"/Users/simon/Documents/simon/projects/relish/package.json",
+		"/Users/simon/Documents/simon/projects/relish/language.js",
+		"/Users/simon/Documents/simon/projects/relish/build.sh",
+		"/Users/simon/Library/Application Support/Sublime Text 3/Packages/User/canopy.sublime-build",
+		"/Users/simon/Documents/simon/projects/relish/build",
+		"/Users/simon/Documents/simon/projects/relish/lists.peg",
+		"/Users/simon/Documents/simon/projects/tesster/server.js",
+		"/Users/simon/Documents/simon/projects/tesster-client/package.json",
+		"/Users/simon/Documents/simon/projects/tesster/views/newest.handlebars",
+		"/Users/simon/Documents/simon/projects/tesster/views/tagged.handlebars",
+		"/Users/simon/Documents/simon/projects/tesster/views/snippet.handlebars",
+		"/Users/simon/Documents/simon/projects/tesster/views/account.handlebars",
+		"/Users/simon/Documents/simon/projects/tesster/client/js/main.js",
+		"/Users/simon/Documents/simon/projects/tesster/README.md",
+		"/Users/simon/Documents/simon/projects/tesster/views/index.handlebars",
+		"/Users/simon/Documents/simon/projects/tesster/views/layouts/main.handlebars",
+		"/Users/simon/Documents/simon/projects/tesster/client/main.js"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"showSlide",
+			"timeStep",
+			"stepSize",
+			"length",
+			"paper",
+			"setContent",
+			"setContents",
+			"Expression",
+			"	</"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 258,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								206,
+								206
+							]
+						],
+						"settings":
+						{
+							"auto_name": "<html>",
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 357.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "seesponsive.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 229.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
