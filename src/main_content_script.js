@@ -9,8 +9,11 @@ document.body.innerHTML =
 	url + "'></iframe>";
 
 $( "#iframeContent" ).load(function() {
-  console.log("Yay the iframe has loaded!");
-  chrome.runtime.sendMessage({greeting: "hello"}, function(response) {
-	  console.log("got response");
-	});
+  chrome.runtime.sendMessage(
+  	{
+	  	action: "iframeLoaded"
+	  }, function(response) {
+		  console.log("got response");
+		}
+	);
 });

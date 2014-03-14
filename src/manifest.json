@@ -11,7 +11,7 @@
   },
 
   "background": {
-    "scripts": ["event_page.js"],
+    "page" : "event_page.html",
     "persistent": false
   },
 
