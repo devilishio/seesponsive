@@ -1,0 +1,40 @@
+html, body {
+  margin:0;
+  height:100%;
+  min-height:100%;
+}
+
+ul {
+	line-height: 26px;
+	margin: 0px;
+	padding: 0px;
+}
+
+iframeContent {
+  height: 100%;
+}
+
+#command-bar {
+	box-sizing: border-box;
+	height: 42px;
+	background-color: #333333;
+	padding: 6px 8px 6px 8px;
+}
+
+#command-bar li {
+	display:inline;
+}
+#command-bar a {
+	line-height:26px;
+	color: white;
+	text-decoration: none;
+	font-family: Helvetica, Verdana, Arial, Sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	padding-right: 20px;
+}
+
+#command-bar a:hover {
+	color: yellow;
+	text-decoration: underline;
+}

@@ -262,10 +262,11 @@ chrome.browserAction.onClicked.addListener(function() {
 	// Inject the main content script into the active tab
 	// Note this script depends on JQuery so we need to inject that first
 	// Injection is asynchronous so it's a bit messy!
-	chrome.tabs.executeScript(null, { file: "jquery-2.1.0.min.js" }, function() {
-    chrome.tabs.executeScript(null, { file: "main_content_script.js" }, function() {
-    	console.log("JQuery and main script were injected into the active tab");
-    });
+	chrome.tabs.insertCSS(null, { file: 'main_content.css' }, function() {
+		chrome.tabs.executeScript(null, { file: "jquery-2.1.0.min.js" }, function() {
+	    chrome.tabs.executeScript(null, { file: "main_content_script.js" }, function() {
+	    	console.log("JQuery and main script were injected into the active tab");
+	    });
+		});
 	});
-
 });
