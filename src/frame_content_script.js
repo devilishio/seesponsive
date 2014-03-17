@@ -1,6 +1,3 @@
-// tells timeout that we've managed to inject the inner content script
-window.seesponsiveLoaded = true;
-
 /*
  * Only intialise if we're in the iframe we've created to house the site.
  * It's named after the extension
@@ -83,6 +80,9 @@ if(window.name == 'seesponsive') {
 			mediaQueries = mediaQueries.concat(getLocalMediaQueries());			
 			console.debug(mediaQueries.length + " media queries were found for the site");
 			console.dir(mediaQueries);
+
+			// set the flag that we've loaded successfully so the timeout handler get the OK
+			parent.document.body.setAttribute("data-seesponsive-loaded", "yes");
 
 			// setup listeners for each of the queries being met
 			listenForMediaQueryChanges(mediaQueries);

@@ -74,8 +74,8 @@ chrome.runtime.sendMessage(
 // not successfully injected. In this case we timeout showing an error message to the user.
 // Reloading the page and trying again normally fixes this.
 setTimeout(function() {
-	if(window.seesponsiveLoaded !== true) {
+	if(document.body.getAttribute("data-seesponsive-loaded") !== "yes") {
 		$(document.body).append("<div id='errorMsg'></div>")
 		$('#errorMsg').text('Oh snap! Something seems to have gone wrong here. Please reload the page and try again');
 	}
-}, 10000);
+}, 12000);
