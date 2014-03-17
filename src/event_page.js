@@ -1,31 +1,15 @@
-/*
- * Checks whether the URL is on the same domain
- * as the window's domain
- */
-function isCrossDomainUrl(url) {
-	var thisHost = location.host;
-	var thatHost = hostname(url);
-	return (thisHost !== thatHost);
+function sendMessageToTab(msg) {
+	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+	  chrome.tabs.sendMessage(tabs[0].id, msg);
+	});
 }
 
 /*
- * Finds the host component of a URL
- */
-function hostname(url) {	
-	var a = document.createElement('a');
-	a.href = url;
-	return a.host;
-}
-
-/*
- * Utility method. Merges a set of results from parsing media 
+ * Utility method. Joins a set of results from parsing media 
  * query descriptors from stylesheets.
  */
-function mergeResults(curr, next) {
-	return {
-		found: curr.found.concat(next.found),
-		unresolved: curr.unresolved.concat(next.unresolved)
-	};
+function joinResults(curr, next) {
+	return curr.concat(next);
 }
 
 /*
@@ -33,17 +17,14 @@ function mergeResults(curr, next) {
  */
 function findMediaQueriesInDocument() {
 
-	var queries = {
-		found: [],
-		unresolved: []
-	};
+	var queries = [];
 
 	var sheets = document.styleSheets;
 	if(sheets != null) {
 		for (var i = 0; i < sheets.length; i += 1) {	
 			var sheet = sheets[i];	
 	    var results = findMediaQueriesInStyleSheet(sheet);
-	    queries = mergeResults(queries, results);
+	    queries = joinResults(queries, results);
 	  }
 	}
 
@@ -52,29 +33,20 @@ function findMediaQueriesInDocument() {
 
 /*
  * Returns any media queries in the given stylesheet and any
- * imported stylesheets. If the sheet or its imported sheets
- * are cross-domain we return them in an "unresolved" list
- * to be sent for processing by the event page.
+ * imported stylesheets.
  */
 function findMediaQueriesInStyleSheet(stylesheet) {
-	var queries = {
-		found: [],
-		unresolved: []
-	};
+	var queries = [];
 
 	if(stylesheet.cssRules != null) {
 
   	// This stylesheet has some rules so we need to extract
   	// out any media queries from this list
   	var results = findMediaQueriesInCssRules(stylesheet.href, stylesheet.cssRules);
-  	queries = mergeResults(queries, results);
+  	queries = joinResults(queries, results);
 
-  } else if(stylesheet.href && isCrossDomainUrl(stylesheet.href)) {
-
-  	// Cross domain restriction prevents access to the rules.
-  	// Push the URL for the stylesheet on to a list that we'll
-  	// pass back to the event page to retrieve and parse.
-  	queries.unresolved.push(stylesheet.href);
+  } else if(stylesheet.href != null){
+  	console.error("Could not extract CSS rules for stylesheet: " + stylesheet.href);
   }
 
   return queries;
@@ -88,10 +60,7 @@ function findMediaQueriesInStyleSheet(stylesheet) {
  * due to cross-domain restrictions.
  */
 function findMediaQueriesInCssRules(href, rules) {
-	var queries = {
-		found: [],
-		unresolved: []
-	};
+	var queries = [];
 
 	for(var i=0; i < rules.length; i++) {
 
@@ -102,12 +71,12 @@ function findMediaQueriesInCssRules(href, rules) {
 		var ruleType = rules[i].constructor;
 
 		if(ruleType === CSSMediaRule) {
-			queries.found.push(queryDescriptor(href, rules[i].media.mediaText));
+			queries.push(queryDescriptor(href, rules[i].media.mediaText));
 		} else if(ruleType === CSSImportRule) {
 			var importedSheet = rules[i].styleSheet;
 			var results = findMediaQueriesInStyleSheet(importedSheet);
 
-			queries = mergeResults(queries, results);
+			queries = joinResults(queries, results);
 		}
 	}
 
@@ -122,6 +91,12 @@ function queryDescriptor(url, text) {
 	}
 }
 
+/*
+ * Load a list of stylesheets by inserting link tags for them
+ * into the event pages for resolution.
+ * This way we can resolve cross-domain stylesheets as our
+ * extension's event script has cross-domain privileges
+ */
 function loadStylesheets(urls, response) {
 	// bind our handler to the list of URLs so it
 	// can know when we're done
@@ -131,7 +106,6 @@ function loadStylesheets(urls, response) {
 	};
 	var handler = handleSheetLoad.bind(ctx);
 
-	console.debug("Loading stylesheets into document");
 	$(urls).each(function(i, url) {
 		console.debug("Loading stylesheet #" + i + ": " + url);
 		$( "<link></link>", {
@@ -150,7 +124,6 @@ function loadStylesheets(urls, response) {
  */
 function handleSheetLoad(event) {
 	var url = event.target.href;
-	console.debug("Stylesheet " + url + " has loaded");
 
 	// remove from list
 	var urls = this.urls;
@@ -158,42 +131,26 @@ function handleSheetLoad(event) {
 	urls.splice(i,1);
 
 	if(urls.length == 0) {
-		console.debug("Loaded all stylesheets - now finding queries in them");
+		console.debug("All stylesheets loaded - extracting queries.");
 		var queries = findMediaQueriesInDocument();
 
 		// Remove the link elements after use
 		$("link").remove();
 
-		var numUnresolved = queries.unresolved.length;
-		if(numUnresolved == 0) {
-			// Send back the details to the content page if we have queries
-			var found = queries.found;
-			if(found.length > 0) {
-				console.debug("Sending " + found.length + " queries back to the content script");
-			} else {
-				console.debug("No media queries found in stylesheets");
-			}
-			this.response(found);
-		} else {
-			console.error("There were " + numUnresolved + " unresolved stylesheets. This should not happen!");
-		}		
+		// Send back the query details to the content page
+		console.debug("Found " + queries.length + " queries to send back to the content script.");
+		
+		this.response(queries);
+			
 	}
-}
-
-function sendMediaQueriesToIframe(mediaQueries) {
-	chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-	  chrome.tabs.sendMessage(tabs[0].id,
-	  	{
-		  	action: "mediaQueriesLoaded",
-		  	mediaQueries: mediaQueries
-	  	}
-	  );
-	});
 }
 
 /*
  * Injects the content script intended for the iframe we've
  * added to the page to embed the site contents in.
+ *
+ * KNOWN ISSUE - the content script intermittently fails to inject into
+ * either the main frame or the iframe. No result code returned. Possible timing issue.
  */
 function injectFrameScript(mediaQueries) {
 	chrome.tabs.executeScript(null, {
@@ -203,15 +160,21 @@ function injectFrameScript(mediaQueries) {
 			// injected iframe
 			allFrames: true,
 			runAt: 'document_end'
-		}, function(results){
+		}, function(results) {
 			var num = results ? results.length : 0;
-			console.log("Frame script was injected into " + num + " frames");
-			if(num == 0) {
+			console.debug("Frame script was injected into " + num + " frames");
+			if(num == 0) {				
+				// could not inject frame content script. Timeout on main content script
+				// will handle this by showing the user an error message
 				console.error("Could not inject the frame content script!");
-			}
+			} else {
 
-			// content script has been loaded into iframe. now send it the media queries
-			sendMediaQueriesToIframe(mediaQueries);
+				// content script has been loaded into iframe. now send it the media queries
+				sendMessageToTab({
+			  	action: "mediaQueriesLoaded",
+			  	mediaQueries: mediaQueries
+				});
+			}
 		}
 	);
 }
@@ -246,7 +209,7 @@ function setupIframeContentScript(details) {
 }
 
 // Adds a listener for messages from this extension's content scripts
-// TODO - make sure the message came from our extension only
+// and perform initialisation of the iframe content script when ready
 chrome.runtime.onMessage.addListener(
   function(request, sender) {
     if(sender.tab) {
@@ -258,14 +221,13 @@ chrome.runtime.onMessage.addListener(
 
 // Called when the user clicks our extension's toolbar button
 chrome.browserAction.onClicked.addListener(function() {
-
 	// Inject the main content script into the active tab
 	// Note this script depends on JQuery so we need to inject that first
 	// Injection is asynchronous so it's a bit messy!
 	chrome.tabs.insertCSS(null, { file: 'main_content.css' }, function() {
 		chrome.tabs.executeScript(null, { file: "jquery-2.1.0.min.js" }, function() {
 	    chrome.tabs.executeScript(null, { file: "main_content_script.js" }, function() {
-	    	console.log("JQuery and main script were injected into the active tab");
+	    	console.debug("Scripts were injected into the active page");
 	    });
 		});
 	});

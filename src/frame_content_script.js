@@ -1,3 +1,6 @@
+// tells timeout that we've managed to inject the inner content script
+window.seesponsiveLoaded = true;
+
 /*
  * Only intialise if we're in the iframe we've created to house the site.
  * It's named after the extension
@@ -69,7 +72,8 @@ if(window.name == 'seesponsive') {
 	}
 
 	// Listen for the event page giving us our media queries
-	chrome.runtime.onMessage.addListener(function listener(request) {
+	chrome.runtime.onMessage.addListener(function listener(request, sender) {
+		
 		if(request.action == 'mediaQueriesLoaded') {
 			var mediaQueries = request.mediaQueries;			
 			chrome.runtime.onMessage.removeListener(listener);
@@ -83,5 +87,6 @@ if(window.name == 'seesponsive') {
 			// setup listeners for each of the queries being met
 			listenForMediaQueryChanges(mediaQueries);
 		}
+		
 	});
 }

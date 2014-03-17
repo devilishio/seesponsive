@@ -13,6 +13,15 @@ function getStylesheetUrls() {
 	return cssUrls;
 }
 
+// chrome.runtime.onMessage.addListener(function (request, sender) {
+// 	console.debug("got message!!");
+// 	console.dir(request);
+// 	if(request.action === 'errorOccurred') {
+// 		$(document.body).append("<div id='errorMsg'></div>")
+// 		$('#errorMsg').text(request.msg);
+// 	}
+// });
+
 var url = location.href;
 var stylesheets = getStylesheetUrls();
 
@@ -60,3 +69,13 @@ chrome.runtime.sendMessage(
   	cssUrls: stylesheets
   }
 );
+
+// This timeout handles the intermittent case where the frame content script is
+// not successfully injected. In this case we timeout showing an error message to the user.
+// Reloading the page and trying again normally fixes this.
+setTimeout(function() {
+	if(window.seesponsiveLoaded !== true) {
+		$(document.body).append("<div id='errorMsg'></div>")
+		$('#errorMsg').text('Oh snap! Something seems to have gone wrong here. Please reload the page and try again');
+	}
+}, 10000);
