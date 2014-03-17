@@ -20,18 +20,34 @@ var stylesheets = getStylesheetUrls();
 $('link').remove();
 
 document.body.innerHTML = 
-	"<div id='command-bar'><ul><li><a href='#' id='shrink-button'>Shrink</a></li><li><a href='#' id='grow-button'>Grow</a></li></ul></div>" +
-	"<iframe id='iframeContent' name='seesponsive' seamless='seamless' width='100%' height='100%' style='overflow:auto' src='" +
+	"<div id='command-bar'><ul>" + 
+	"<li><a href='#' id='shrink-button'>Shrink</a></li>" +
+	"<li><a href='#' id='grow-button'>Grow</a></li>" +
+	"<li id='queryMsg'><span id='queryMsg-status'></span><span id='queryMsg-query'></span></li>" +
+	"</ul></div>" +
+	"<iframe id='iframeContent' name='seesponsive' seamless='seamless' style='overflow:auto' src='" +
 	url + "'></iframe>";
+
+// empty the query message status
+function clearStatusMsg() {
+	$('#queryMsg-status').empty();
+	$('#queryMsg-status').removeClass();
+	$('#queryMsg-query').empty();
+}
 
 // handle shrink and grow actions
 $('#shrink-button').click(function() {
-	$('#iframeContent').animate({ width: '340px'}, 15000, 'linear');
+	$('#iframeContent').animate({ width: '340px'}, 15000, 'linear', function() {
+		clearStatusMsg();
+	});
 	return false;
 });
 
 $('#grow-button').click(function() {
-	$('#iframeContent').animate({ width: '1200px'}, 15000, 'linear');
+	var maxWidth = document.body.clientWidth + 'px';
+	$('#iframeContent').animate({ width: maxWidth}, 15000, 'linear', function() {
+		clearStatusMsg();
+	});
 	return false;
 });
 

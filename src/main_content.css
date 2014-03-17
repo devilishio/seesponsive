@@ -10,8 +10,29 @@ ul {
 	padding: 0px;
 }
 
-iframeContent {
-  height: 100%;
+#iframeContent {
+  height: calc(100% - 42px);
+  width: 100%;
+}
+
+#queryMsg {
+	padding-left: 300px;
+}
+
+#queryMsg-status.matched {
+	background-color: #2ECC40;
+}
+
+#queryMsg-status.unmatched {
+	background-color: #FF4136;
+}
+
+#queryMsg-status {
+	font-size: 12px;
+	padding: 4px;
+	border-radius: 4px;
+	color: white;
+	margin-right: 15px;
 }
 
 #command-bar {
@@ -21,16 +42,19 @@ iframeContent {
 	padding: 6px 8px 6px 8px;
 }
 
-#command-bar li {
-	display:inline;
-}
-#command-bar a {
-	line-height:26px;
+#command-bar li, #command-bar a {
 	color: white;
 	text-decoration: none;
 	font-family: Helvetica, Verdana, Arial, Sans-serif;
 	font-size: 16px;
 	font-weight: bold;
+}
+
+#command-bar li {
+	display:inline;
+}
+#command-bar a {
+	line-height:26px;
 	padding-right: 20px;
 }
 

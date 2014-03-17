@@ -32,13 +32,39 @@ if(window.name == 'seesponsive') {
 			
 			var mql = window.matchMedia(mediaQueries[i].text);
       mql.addListener(function(q) {
-      	console.debug("Media query triggered: " + q.media);
       	if(q.matches) {
-      		console.debug("... condition was met");
+      		displayMediaQueryAction(true, q.media);
       	} else {
-      		console.debug("... condition was not met");
+      		displayMediaQueryAction(false, q.media);
       	}
       });
+		}
+	}
+
+	/*
+	 * Displays a message in the action bar to indicate a media
+	 * query has become active/inactive
+	 */
+	function displayMediaQueryAction(queryActive, query) {
+	  var doc = parent.document;
+
+	  // set the matched/unmatched status and the query description
+	  var statusSpan = doc.getElementById('queryMsg-status');
+	  var querySpan = doc.getElementById('queryMsg-query');
+	  var status = (queryActive ? 'MATCHED' : 'UNMATCHED');
+	  statusSpan.className = status.toLowerCase();
+	  
+	  setOrReplaceText(statusSpan, status);
+	  setOrReplaceText(querySpan, query);	  
+	}
+
+	function setOrReplaceText(el, text) {
+		var textNode = el.ownerDocument.createTextNode(text);
+		var firstChild = el.firstChild;
+		if(firstChild != null) {
+			el.replaceChild(textNode, firstChild);
+		} else {
+			el.appendChild(textNode);
 		}
 	}
 
@@ -58,6 +84,4 @@ if(window.name == 'seesponsive') {
 			listenForMediaQueryChanges(mediaQueries);
 		}
 	});
-
-	console.debug("Frame content script loaded into iframe!");
 }

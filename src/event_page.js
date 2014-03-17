@@ -248,7 +248,7 @@ function setupIframeContentScript(details) {
 // Adds a listener for messages from this extension's content scripts
 // TODO - make sure the message came from our extension only
 chrome.runtime.onMessage.addListener(
-  function(request, sender, sendResponse) {
+  function(request, sender) {
     if(sender.tab) {
     	if(request.action == 'mainContentInjected') {
     		setupIframeContentScript(request);
