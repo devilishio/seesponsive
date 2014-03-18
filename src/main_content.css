@@ -5,7 +5,11 @@ html, body {
   font-family: Helvetica, Verdana, Arial, Sans-serif;
 }
 
-ul {
+.hidden {
+	display: none;
+}
+
+ul, #loadingMsg {
 	line-height: 26px;
 	margin: 0px;
 	padding: 0px;
@@ -53,12 +57,13 @@ ul {
 
 #command-bar {
 	box-sizing: border-box;
+	font-weight: bold;
 	height: 42px;
 	background-color: #333333;
 	padding: 6px 8px 6px 8px;
 }
 
-#command-bar li, #command-bar a {
+#command-bar, #command-bar a {
 	color: white;
 	text-decoration: none;
 	font-size: 16px;

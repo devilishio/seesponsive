@@ -84,6 +84,12 @@ if(window.name == 'seesponsive') {
 			// set the flag that we've loaded successfully so the timeout handler get the OK
 			parent.document.body.setAttribute("data-seesponsive-loaded", "yes");
 
+			// release the hounds!
+			var el = parent.document.getElementById('loadingMsg');
+			el.className = 'hidden';
+			el = parent.document.getElementById('actions');
+			el.className = '';
+
 			// setup listeners for each of the queries being met
 			listenForMediaQueryChanges(mediaQueries);
 		}

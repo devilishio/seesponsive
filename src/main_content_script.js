@@ -29,7 +29,8 @@ var stylesheets = getStylesheetUrls();
 $('link').remove();
 
 document.body.innerHTML = 
-	"<div id='command-bar'><ul>" + 
+	"<div id='command-bar'><span id='loadingMsg'>Loading ... please wait</span>" + 
+	"<ul id='actions' class='hidden'>" + 
 	"<li><a href='#' id='shrink-button'>Shrink</a></li>" +
 	"<li><a href='#' id='grow-button'>Grow</a></li>" +
 	"<li id='queryMsg'><span id='queryMsg-status'></span><span id='queryMsg-query'></span></li>" +
